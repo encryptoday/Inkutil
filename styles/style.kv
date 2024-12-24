@@ -1,0 +1,585 @@
+WindowManager:
+    Dashboard:
+    Cameraa:
+    Calculator:
+    FileManagerr:
+
+<Dashboard>:
+    name: 'dashboard'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width,root.height
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: 60
+            md_bg_color: 55/255, 0/255, 179/255, 1
+
+
+            MDLabel:
+                text: '1NCODEX'
+                font_size: 30
+                halign: 'center'
+                font_name: 'includes/fonts/roman.otf'
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            size: root.width,150
+
+            MDGridLayout:
+                rows : 2
+                adaptive_height: True
+
+                MDLabel:
+                    text: 'have a happy'
+                    font_size: 20
+                    halign: 'center'
+                    font_name: 'includes/fonts/roman.otf'
+
+                MDLabel:
+                    text: root.day
+                    font_size: 40
+                    halign: 'center'
+                    font_name: 'includes/fonts/roman.otf'
+
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: 300
+
+            MDGridLayout:
+                rows: 2
+                cols: 2
+                padding: [30,50,50,20]
+                spacing: 40
+
+                #---- ROW ------
+
+                Button:
+                    text: 'Camera'
+                    font_size: 20
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    color: 98/255, 0/255, 238/255, 1
+                    background_color: 18/255,18/255,16/255,1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release:
+                        app.root.current = 'cameraa'
+                        root.manager.transition.direction = 'left'
+
+                Button:
+                    text: 'Calclatr'
+                    font_size: 20
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    color: 98/255, 0/255, 238/255, 1
+                    background_color: 18/255,18/255,16/255,1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release:
+                        app.root.current = 'calculator'
+                        root.manager.transition.direction = 'left'
+
+                Button:
+                    text: 'File Mngr'
+                    font_size: 20
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    color: 98/255, 0/255, 238/255, 1
+                    background_color: 18/255,18/255,16/255,1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release:
+                        app.root.current = 'filemanager'
+                        root.manager.transition.direction = 'left'
+
+                Button:
+                    text: 'Notepad'
+                    font_size: 20
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_release:
+                        app.root.current = 'cameraa'
+                        root.manager.transition.direction = 'left'
+
+
+
+        Widget:
+
+
+<Cameraa>:
+    name: 'cameraa'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 18/255,18/255,16/255,1
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 60
+            md_bg_color: 55/255, 0/255, 179/255, 1
+
+            MDIconButton:
+                icon: 'step-backward-2'
+                icon_size: 33
+                on_release:
+                    app.root.current = 'dashboard'
+                    root.manager.transition.direction = 'right'
+
+            MDLabel:
+                text: '1NCODEX'
+                font_size: 30
+                halign: 'center'
+                font_name: 'includes/fonts/roman.otf'
+
+        Camera:
+            id: camera
+            resolution: (640, 480)
+            play: False
+
+    MDBoxLayout:
+        MDBoxLayout:
+            padding: [10,10,10,10]
+            spacing: 20
+            ToggleButton:
+                text: 'Play'
+                font_size: 20
+                font_name: 'includes/fonts/lightMono.ttf'
+                background_color: 18/255,18/255,16/255,1
+                color: 98/255, 0/255, 238/255, 1
+                canvas.before:
+                    Color:
+                        rgba: 98/255, 0/255, 238/255, 1
+                    Line:
+                        width: 0.9
+                        rectangle: self.x, self.y, self.width, self.height
+                on_press: camera.play = not camera.play
+                size_hint_y: None
+                height: '48dp'
+            Button:
+                text: 'Capture'
+                font_size: 20
+                font_name: 'includes/fonts/lightMono.ttf'
+                background_color: 18/255,18/255,16/255,1
+                color: 98/255, 0/255, 238/255, 1
+                canvas.before:
+                    Color:
+                        rgba: 98/255, 0/255, 238/255, 1
+                    Line:
+                        width: 0.9
+                        rectangle: self.x, self.y, self.width, self.height
+                size_hint_y: None
+                height: '48dp'
+                on_press: root.capture()
+
+
+<Calculator>:
+    name: 'calculator'
+
+    MDBoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 60
+            md_bg_color: 55/255, 0/255, 179/255, 1
+
+            MDIconButton:
+                icon: 'step-backward-2'
+                icon_size: 33
+                on_release:
+                    app.root.current = 'dashboard'
+                    root.manager.transition.direction = 'right'
+
+            MDLabel:
+                text: '1NCODEX'
+                font_size: 30
+                halign: 'center'
+                font_name: 'includes/fonts/roman.otf'
+
+        MDBoxLayout:
+            size_hint_y : None
+            height : 20
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size: root.width,root.height
+            padding: [10,0,10,20]
+
+            MDTextField:
+                id: calc_input
+                line_color_normal: 1/255, 135/255, 134/255, 1
+                text: '0'
+                mode: "rectangle"
+                halign: 'right'
+                font_size: 30
+                font_name: 'includes/fonts/lightMono.ttf'
+                border: [0,0,0,0]
+
+            MDBoxLayout:
+                size_hint_y : None
+                height : 10
+
+            GridLayout:
+                cols: 4
+                rows: 5
+                spacing: 7
+# ROW 1
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '%'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: 'CE'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+
+                Button:
+                    id: clear
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: 'C'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.clear()
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '/'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.devide()
+# ROW 2
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '7'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(7)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '8'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(8)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '9'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(9)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: 'X'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.multiply()
+
+# ROW 3
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '4'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(4)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '5'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(5)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '6'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(6)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '-'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.substract()
+# ROW 4
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '1'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(1)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '2'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(2)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '3'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(3)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '+'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.add()
+
+# ROW 5
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '+/-'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '0'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+                    on_press: root.button_press(0)
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '.'
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 98/255, 0/255, 238/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 98/255, 0/255, 238/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+
+                Button:
+                    size_hint: 0.2,0.2
+                    font_size: 30
+                    text: '='
+                    font_name: 'includes/fonts/lightMono.ttf'
+                    background_color: 18/255,18/255,16/255,1
+                    color: 1/255, 135/255, 134/255, 1
+                    canvas.before:
+                        Color:
+                            rgba: 1/255, 135/255, 134/255, 1
+                        Line:
+                            width: 0.9
+                            rectangle: self.x, self.y, self.width, self.height
+
+                    on_press: root.equal()
+
+
+<FileManagerr>:
+    name: 'filemanager'
+    MDBoxLayout:
+        orientation: 'vertical'
+        md_bg_color: 18/255,18/255,16/255,1
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 60
+            md_bg_color: 55/255, 0/255, 179/255, 1
+
+            MDIconButton:
+                icon: 'step-backward-2'
+                icon_size: 33
+                on_release:
+                    app.root.current = 'dashboard'
+                    root.manager.transition.direction = 'right'
+
+            MDLabel:
+                text: '1NCODEX'
+                font_size: 30
+                halign: 'center'
+                font_name: 'includes/fonts/roman.otf'
+
+        FileChooser:
+            id: fc
+            rootpath: 'captures/'
+            FileChooserIconLayout
