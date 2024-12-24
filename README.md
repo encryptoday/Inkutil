@@ -16,4 +16,4 @@ A lightweight and versatile Android utility app designed with a minimalistic app
 ## Installation
 1. Clone the repository:  
    ```bash
-   git clone https://github.com/yourusername/utility-app.git
+   git clone https://github.com/encryptoday/Inkutil.git
