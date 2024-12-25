@@ -13,6 +13,9 @@ A lightweight and versatile Android utility app designed with a minimalistic app
 - Responsive calculator for day-to-day arithmetic tasks.  
 - Minimalistic design focused on usability and efficiency.  
 
+# Screenshots
+![](https://mmm.sh/github/inkutil/calc.png)
+
 ## Installation
 1. Clone the repository:  
    ```bash
