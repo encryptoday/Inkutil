@@ -14,7 +14,9 @@ A lightweight and versatile Android utility app designed with a minimalistic app
 - Minimalistic design focused on usability and efficiency.  
 
 # Screenshots
-![Calculator Screenshoots](https://mmm.sh/github/inkutil/calc.png)
+![Calculator](https://mmm.sh/github/inkutil/calc.png)
+![File Manager](https://mmm.sh/github/inkutil/files.png)
+![Camera](https://mmm.sh/github/inkutil/camera.png)
 
 ## Installation
 1. Clone the repository:  
