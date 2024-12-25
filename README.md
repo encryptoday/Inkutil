@@ -14,10 +14,11 @@ A lightweight and versatile Android utility app designed with a minimalistic app
 - Minimalistic design focused on usability and efficiency.  
 
 # Screenshots
-
-<img src="https://mmm.sh/github/inkutil/calc.png" width="30%">
-<img src="https://mmm.sh/github/inkutil/files.png" width="30%">
-<img src="https://mmm.sh/github/inkutil/camera.png" width="30%">
+<div style="display:flex">
+   <img src="https://mmm.sh/github/inkutil/calc.png" width="30%">
+   <img src="https://mmm.sh/github/inkutil/files.png" width="30%">
+   <img src="https://mmm.sh/github/inkutil/camera.png" width="30%">   
+</div>
 
 ## Installation
 1. Clone the repository:  
