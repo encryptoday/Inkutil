@@ -14,7 +14,7 @@ A lightweight and versatile Android utility app designed with a minimalistic app
 - Minimalistic design focused on usability and efficiency.  
 
 # Screenshots
-<div style="display: flex; justify-content: space-around; align-items: flex-start;">
+<div style="display: flex; justify-content: space-around; align-items: flex-start;flex-wrap:wrap;gap:10px;">
    <img src="https://mmm.sh/github/inkutil/calc.png" width="30%">
    <img src="https://mmm.sh/github/inkutil/files2.png" width="30%">
    <img src="https://mmm.sh/github/inkutil/camera.png" width="30%">   
